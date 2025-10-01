@@ -281,5 +281,3 @@ node server.js
 - MySQL runs inside Docker on **port 3307**.  
 - Node.js connects to it using `127.0.0.1:3307`.  
 - Simple Express API performs CRUD operations on the `users` table.  
-
-Now you can use this as a base project and push it to your **GitHub** 🚀.
