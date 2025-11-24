@@ -13,7 +13,7 @@ docker run -d \
   --name my-mongo \
   -p 27017:27017 \
   -e MONGO_INITDB_ROOT_USERNAME=root \
-  -e MONGO_INITDB_ROOT_PASSWORD=example \
+  -e MONGO_INITDB_ROOT_PASSWORD=pass \
   mongo:6
 ```
 
@@ -33,7 +33,7 @@ docker run -d \
   --name my-mongo-express \
   -p 8081:8081 \
   -e ME_CONFIG_MONGODB_ADMINUSERNAME=root \
-  -e ME_CONFIG_MONGODB_ADMINPASSWORD=example \
+  -e ME_CONFIG_MONGODB_ADMINPASSWORD=pass \
   -e ME_CONFIG_MONGODB_SERVER=my-mongo \
   --link my-mongo:mongo \
   mongo-express:1.0.0
@@ -51,12 +51,12 @@ docker ps
 ```
 
 * Access Mongo Express: `http://localhost:8081`
-* Use `root` / `example` to log in
+* Use `root` / `pass` to log in
 
 Test MongoDB connection with:
 
 ```bash
-docker exec -it my-mongo mongosh -u root -p example
+docker exec -it my-mongo mongosh -u root -p pass
 ```
 
 
