@@ -138,7 +138,13 @@ app.delete("/users/:id", async (req, res) => {
 app.listen(3000, () => console.log("🚀 Server running on http://localhost:3000"));
 ```
 
-> **Note:** `host.docker.internal` allows the Node.js container to reach the host machine, where MongoDB’s port `27017` is mapped.
+> **Note:**  Why IP Address ( mongodb://root:pass@172.17.0.2:27017/mydb?authSource=admin) is Needed on Docker’s Default Bridge Network
+
+When using Docker’s default bridge network, containers do not get automatic DNS-based name resolution. This means that one container (e.g., a Node.js app) cannot reach another container (e.g., MongoDB) simply by using its container name.
+As a result, the application must connect using the MongoDB container’s IP address, which is assigned dynamically on the default bridge network.
+
+Because these IPs can change any time the containers restart, relying on them is inconvenient and unreliable.
+This is why Docker recommends using a user-defined bridge network, which automatically provides DNS resolution so containers can communicate using names instead of IP addresses.
 
 ---
 
